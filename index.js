@@ -1,14 +1,54 @@
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
+c.fillStyle = 'grey'
+c.fillRect(0, 0, canvas.width, canvas.height);
 
 // Adding the Map at the screen //  
+
 
 canvas.width = 1366;
 canvas.height = 768;
 
-c.fillStyle = 'grey'
-c.fillRect(0, 0, canvas.width, canvas.height);
+const collisionsMap = []
+for (let i = 0; i < collisions.length; i += 80) {
+    collisionsMap.push(collisions.slice(i, 80 + i))
+}
+
+class Boundary {
+    static width = 48
+    static height = 48
+    constructor({ position }) {
+        this.position = position
+        this.width = 48
+        this.height = 48
+    }
+    draw() {
+        c.fillStyle = 'red'
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
+}
+
+const boundaries = []
+const offset = {
+    x: -85,
+    y: -810
+}
+
+collisionsMap.forEach((row, i) => {
+    row.forEach((symbol, j) => {
+        if (symbol === 1025)
+            boundaries.push(
+                new Boundary({
+                    position: {
+                        x: j * Boundary.width + offset.x,
+                        y: i * Boundary.height + offset.y
+                    }
+                })
+            )
+    })
+})
+
 
 const image = new Image();
 image.src = './img/rainCouverTown.png';
@@ -26,14 +66,27 @@ class Sprite {
     }
 
     draw() {
-        c.drawImage(this.image, this.position.x, this.position.y);
+        c.drawImage(this.image, this.position.x, this.position.y)
+        c.drawImage(
+            this.image,
+            0,
+            0,
+            this.image.width / 4,
+            this.image.height,
+            canvas.width / 2 - this.image.width / 4 / 2,
+            canvas.height / 2 - this.image.height / 2,
+            this.image.width / 4,
+            this.image.height,
+        );
     }
 }
 
+
+
 const background = new Sprite({
     position: {
-        x: -278,
-        y: -1140
+        x: offset.x,
+        y: offset.y
     },
     image: image
 })
@@ -53,26 +106,43 @@ const keys = {
     },
 }
 
+const testBoundary = new Boundary({
+    position: {
+        x: 400,
+        y: 400
+    }
+})
+
+
+const movables = [background, testBoundary]
 function animate() {
     window.requestAnimationFrame(animate)
     background.draw()
-    c.drawImage(
-        playerImage,
-        0,
-        0,
-        playerImage.width / 4,
-        playerImage.height,
-        canvas.width / 2 - playerImage.width / 4 / 2,
-        canvas.height / 2 - playerImage.height / 2,
-        playerImage.width / 4,
-        playerImage.height,
-    )
+    //    boundaries.forEach(boundary => {
+    //        boundary.draw()
+    //    })
+    testBoundary.draw()
 
-    if (keys.w.pressed && lastKey == 'w') background.position.y += 3
-    else if (keys.a.pressed && lastKey == 'a') background.position.x += 3
-    else if (keys.s.pressed && lastKey == 's') background.position.y -= 3
-    else if (keys.d.pressed && lastKey == 'd') background.position.x -= 3
 
+    // if (player.position.x + player.width)
+
+    if (keys.w.pressed && lastKey == 'w') {
+        movables.forEach((movable) => {
+            movable.position.y += 3
+        })
+    } else if (keys.a.pressed && lastKey == 'a') {
+        movables.forEach((movable) => {
+            movable.position.x += 3
+        })
+    } else if (keys.s.pressed && lastKey == 's') {
+        movables.forEach((movable) => {
+            movable.position.y -= 3
+        })
+    } else if (keys.d.pressed && lastKey == 'd') {
+        movables.forEach((movable) => {
+            movable.position.x -= 3
+        })
+    }
 }
 animate()
 
@@ -116,3 +186,4 @@ window.addEventListener('keyup', (e) => {
             break
     }
 })
+
