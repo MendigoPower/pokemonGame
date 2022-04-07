@@ -14,8 +14,6 @@ for (let i = 0; i < battleZonesData.length; i += 80) {
     battleZonesMap.push(battleZonesData.slice(i, 80 + i))
 }
 
-console.log(battleZonesMap)
-
 const boundaries = []
 const offset = {
     x: -85,
@@ -52,8 +50,6 @@ battleZonesMap.forEach((row, i) => {
             )
     })
 })
-
-console.log(battleZones)
 
 const image = new Image();
 image.src = './img/rainCouverTown.png';
@@ -305,62 +301,9 @@ function animate() {
             })
     }
 }
-// animate()
-
-const battleBackgroundImage = new Image()
-battleBackgroundImage.src = './img/battleBackground.png'
-const battleBackground = new Sprite({
-    position: {
-        x: 0,
-        y: 0
-    },
-    image: battleBackgroundImage
-})
-
-const draggleImage = new Image()
-draggleImage.src = './img/draggleSprite.png'
-const draggle = new Sprite ({
-    position: {
-        x: 1070,
-        y: 150,
-    },
-    image: draggleImage,
-    frames: {
-        max: 4,
-        hold: 60
-    },
-    animate: true
-})
-
-const embyImage = new Image()
-embyImage.src = './img/embySprite.png'
-const emby = new Sprite ({
-    position: {
-        x: 360,
-        y: 400,
-    },
-    image: embyImage,
-    frames: {
-        max: 4,
-        hold: 60
-    },
-    animate: true
-})
-
-function animateBattle() {
-    window.requestAnimationFrame(animateBattle)
-    battleBackground.draw()
-    draggle.draw()
-    emby.draw()
-}
-
-animateBattle()
-// animate()
-
 
 
 // Moving the player through map //  
-
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
         case 'w':
