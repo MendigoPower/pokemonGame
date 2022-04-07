@@ -1,6 +1,6 @@
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
-
+audio.map.play()
 canvas.width = 1366;
 canvas.height = 768;
 
@@ -169,6 +169,11 @@ function animate() {
             ) {
                 // deactivate current animation loop
                 window.cancelAnimationFrame(animationId)
+
+                audio.map.stop()
+                audio.initBattle.play()
+                audio.battle.play()
+                
                 battle.initiated = true
                 gsap.to('#overlappingDiv', {
                     opacity: 1,
@@ -343,3 +348,10 @@ window.addEventListener('keyup', (e) => {
     }
 })
 
+let clicked = false
+addEventListener('click', () => {
+    if (!clicked) {
+        audio.map.play()
+        clicked = true
+    }
+})
