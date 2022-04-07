@@ -1,12 +1,5 @@
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
-console.log(battleZonesData)
-
-c.fillStyle = 'grey'
-c.fillRect(0, 0, canvas.width, canvas.height);
-
-// Adding the Map at the screen //  
-
 
 canvas.width = 1366;
 canvas.height = 768;
@@ -140,8 +133,12 @@ function rectangularCollision({ rectangle1, rectangle2 }) {
         rectangle1.position.y + rectangle1.height >= rectangle2.position.y)
 }
 
+const battle = {
+    initiated: false
+}
+
 function animate() {
-    window.requestAnimationFrame(animate)
+    const animationId = window.requestAnimationFrame(animate)
     background.draw()
     boundaries.forEach(boundary => {
         boundary.draw()
@@ -152,6 +149,11 @@ function animate() {
     player.draw()
     foreground.draw()
 
+    let moving = true
+    player.moving = false
+
+    if (battleZones.initiated) return
+    // activate battle
     if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
         for (let i = 0; i < battleZones.length; i++) {
             const battleZone = battleZones[i]
@@ -168,15 +170,36 @@ function animate() {
                 overlappingArea > (player.width * player.height) / 2 &&
                 Math.random() < 0.01
             ) {
-                console.log('battle zone collision')
+                // deactivate current animation loop
+                window.cancelAnimationFrame(animationId)
+                battle.initiated = true
+                gsap.to('#overlappingDiv', {
+                    opacity: 1,
+                    repeat: 3,
+                    yoyo: true,
+                    duration: 0.4,
+                    onComplete() {
+                        gsap.to('#overlappingDiv', {
+                            opacity: 1,
+                            duration: 0.4,
+                            onComplete() {
+                                // activate a new animation loop
+                                animateBattle()
+                                gsap.to('#overlappingDiv', {
+                                    opacity: 0,
+                                    duration: 0.4
+                                })
+                            }
+                        })
+                    }
+                })
                 break
             }
         }
 
     }
 
-    let moving = true
-    player.moving = false
+
     if (keys.w.pressed && lastKey == 'w') {
         player.moving = true
         player.image = player.sprites.up
@@ -283,6 +306,19 @@ function animate() {
 }
 animate()
 
+const battleBackgroundImage = new Image()
+battleBackgroundImage.src = './img/battleBackground.png'
+const battleBackground = new Sprite({
+    position: {
+        x: 0,
+        y: 0
+    },
+    image: battleBackgroundImage
+})
+function animateBattle() {
+    window.requestAnimationFrame(animateBattle)
+    battleBackground.draw()
+}
 
 // Moving the player through map //  
 

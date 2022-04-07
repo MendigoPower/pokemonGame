@@ -4,8 +4,14 @@
         margin: 0;
     }
 </style>
+<div style="display: inline-block; position: relative;">
+    <div id="overlappingDiv"
+        style="background-color: black; position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0; pointer-events: none;">
+    </div>
+    <canvas></canvas>
+</div>
 
-<canvas></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js" integrity="sha512-bD2JVWcpIS1kkd7gbzcVKfGbwLTRKL+2RT55rGbhSp/nqCz8vanLuZ8O5K1FLtyPoS2RvLD9sThVgHdgrHFBPw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="data/battleZones.js"></script>
 <script src="data/collisions.js"></script>
 <script src="data/classes.js"></script>
