@@ -8,12 +8,14 @@ class Sprite {
         rotation = 0,
     }) {
         this.position = position
-        this.image = image
+        this.image = new Image
         this.frames = { ...frames, val: 0, elapsed: 0 }
         this.image.onload = () => {
             this.width = this.image.width / this.frames.max
             this.height = this.image.height / this.frames.max
         }
+        this.image.src = image.src
+
         this.animate = animate
         this.sprites = sprites
         this.opacity = 1

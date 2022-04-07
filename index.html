@@ -42,59 +42,57 @@
             background-color: black; 
             position: absolute; top: 0; right: 0; bottom: 0; left: 0; 
             opacity: 0; 
-            pointer-events: none;">
+            pointer-events: none;
+            z-index: 10;">
         </div>
 
-        <div 
-            style="background-color: white; 
-            width: 350px; 
-            position: absolute;
-            top: 50px;
-            left: 70px;
-            border: 4px black solid;
-            padding: 20px;">
-            <h1 style="font-size: 15px;">Draggle</h1>
+        <canvas></canvas>
 
-            <div style="position: relative;">
-                <div style="height: 6px; background-color: #ccc; margin-top: 15px;"></div>
-                <div id="enemyHealthBar"
-            style="
-            height: 6px; 
-            background-color: green; 
-            position: absolute; 
-            top: 0;
-            left: 0;
-            right: 0;"></div>
-            </div>
-        </div>
-
-        <div style="
-        background-color: white; 
+        <div id="userInterface">
+            <div style="background-color: white; 
         width: 350px; 
         position: absolute;
-        top: 490px;
-        right: 80px;
+        top: 50px;
+        left: 70px;
         border: 4px black solid;
         padding: 20px;">
-            <h1 style="font-size: 15px;">Emby</h1>
+                <h1 style="font-size: 15px;">Draggle</h1>
 
-            <div 
-            style="position: relative;">
-                <div style="height: 6px; background-color: #ccc; margin-top: 15px;"></div>
-                <div  id="playerHealthBar"
-                style="
+                <div style="position: relative;">
+                    <div style="height: 6px; background-color: #ccc; margin-top: 15px;"></div>
+                    <div id="enemyHealthBar" style="
         height: 6px; 
         background-color: green; 
         position: absolute; 
         top: 0;
         left: 0;
         right: 0;"></div>
+                </div>
             </div>
-        </div>
 
-        <canvas></canvas>
+            <div style="
+    background-color: white; 
+    width: 350px; 
+    position: absolute;
+    top: 490px;
+    right: 80px;
+    border: 4px black solid;
+    padding: 20px;">
+                <h1 style="font-size: 15px;">Emby</h1>
 
-        <div style="
+                <div style="position: relative;">
+                    <div style="height: 6px; background-color: #ccc; margin-top: 15px;"></div>
+                    <div id="playerHealthBar" style="
+    height: 6px; 
+    background-color: green; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;"></div>
+                </div>
+            </div>
+
+            <div style="
             background-color: white; 
             height: 150px; 
             position: absolute; 
@@ -104,8 +102,7 @@
             border-top: 6px black solid;
             display: flex;">
 
-            <div id="dialogueBox"
-             style="position: absolute; 
+                <div id="dialogueBox" style="position: absolute; 
              top: 0; 
              right:0; 
              bottom:0; 
@@ -115,22 +112,22 @@
              display: none;
              cursor: pointer;">asdfasd</div>
 
-            <div id="attacksBox"
-             style="width: 66.66%;
+                <div id="attacksBox" style="width: 66.66%;
             display: grid;
             grid-template-columns: repeat(2, 1fr)">
 
-            </div>
+                </div>
 
-            <div style="
+                <div style="
                 display: flex; 
                 align-items: center;
                 justify-content: center;
                 width: 33.33%;
                 border-left: 6px black solid ;">
-                <h1 id="attackType" style="font-size: 16px;">Attack Type</h1>
-            </div>
+                    <h1 id="attackType" style="font-size: 16px;">Attack Type</h1>
+                </div>
 
+            </div>
         </div>
     </div>
 
