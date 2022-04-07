@@ -1,0 +1,50 @@
+* {
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background-color: black;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+.body_format {
+    display: inline-block; 
+    position: relative;
+}
+
+.body_style {
+    background-color: black; 
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0; 
+    opacity: 0; 
+    pointer-events: none;
+    z-index: 10;
+}
+
+.user_interface_display {
+    display: none;
+}
+
+.user_interface_style {
+    background-color: white; 
+    width: 350px; 
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    border: 4px black solid;
+    padding: 20px;
+}
+

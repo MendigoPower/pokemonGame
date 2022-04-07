@@ -8,28 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            font-family: 'Press Start 2P', cursive;
-        }
-
-        body {
-            background-color: black;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        button {
-            border: 0;
-            cursor: pointer;
-            font-size: 17px;
-        }
-
-        button:hover {
-            background-color: #ddd;
-        }
     </style>
     <title>Pokemon Game</title>
 
@@ -37,27 +17,15 @@
 
 <body>
 
-    <div style="display: inline-block; position: relative;">
-        <div id="overlappingDiv" style="
-            background-color: black; 
-            position: absolute; top: 0; right: 0; bottom: 0; left: 0; 
-            opacity: 0; 
-            pointer-events: none;
-            z-index: 10;">
+    <div class="body_format">
+        <div id="overlappingDiv" class="body_style">
         </div>
 
         <canvas></canvas>
 
-        <div id="userInterface" style="display: none;">
-            <div style="background-color: white; 
-        width: 350px; 
-        position: absolute;
-        top: 50px;
-        left: 70px;
-        border: 4px black solid;
-        padding: 20px;">
+        <div id="userInterface" class="user_interface_display">
+            <div class="user_interface_style">
                 <h1 style="font-size: 15px;">Draggle</h1>
-
                 <div style="position: relative;">
                     <div style="height: 6px; background-color: #ccc; margin-top: 15px;"></div>
                     <div id="enemyHealthBar" style="
@@ -143,7 +111,7 @@
     <script src="data/attacks.js"></script>
     <script src="data/monsters.js"></script>
     <script src="data/classes.js"></script>
-    <script src="index.js"></script>
+    <script src="data/index.js"></script>
     <script src="data/battle.js"></script>
 </body>
 
