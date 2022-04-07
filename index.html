@@ -1,18 +1,132 @@
-<style>
-    body {
-        background-color: black;
-        margin: 0;
-    }
-</style>
-<div style="display: inline-block; position: relative;">
-    <div id="overlappingDiv"
-        style="background-color: black; position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0; pointer-events: none;">
-    </div>
-    <canvas></canvas>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js" integrity="sha512-bD2JVWcpIS1kkd7gbzcVKfGbwLTRKL+2RT55rGbhSp/nqCz8vanLuZ8O5K1FLtyPoS2RvLD9sThVgHdgrHFBPw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="data/battleZones.js"></script>
-<script src="data/collisions.js"></script>
-<script src="data/classes.js"></script>
-<script src="index.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        button {
+            border: 0;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+    <title>Pokemon Game</title>
+
+</head>
+
+<body>
+
+    <div style="display: inline-block; position: relative;">
+        <div id="overlappingDiv" style="
+            background-color: black; 
+            position: absolute; top: 0; right: 0; bottom: 0; left: 0; 
+            opacity: 0; 
+            pointer-events: none;">
+        </div>
+
+        <div style="
+            background-color: white; 
+            width: 350px; 
+            position: absolute;
+            top: 50px;
+            left: 70px;
+            border: 4px black solid;
+            padding: 20px;">
+            <h1 style="font-size: 15px;">Draggle</h1>
+
+            <div style="position: relative;">
+                <div style="height: 6px; background-color: #ccc; margin-top: 15px;"></div>
+                <div style="
+            height: 6px; 
+            background-color: green; 
+            position: absolute; 
+            top: 0;
+            left: 0;
+            right: 0;"></div>
+            </div>
+        </div>
+
+        <div style="
+        background-color: white; 
+        width: 350px; 
+        position: absolute;
+        top: 490px;
+        right: 80px;
+        border: 4px black solid;
+        padding: 20px;">
+            <h1 style="font-size: 15px;">Emby</h1>
+
+            <div style="position: relative;">
+                <div style="height: 6px; background-color: #ccc; margin-top: 15px;"></div>
+                <div style="
+        height: 6px; 
+        background-color: green; 
+        position: absolute; 
+        top: 0;
+        left: 0;
+        right: 0;"></div>
+            </div>
+        </div>
+
+        <canvas></canvas>
+
+        <div style="
+            background-color: white; 
+            height: 150px; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            right: 0;
+            border-top: 6px black solid;
+            display: flex;">
+
+            <div style="width: 66.66%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr)">
+                <button>Tackle</button>
+                <button>Attack 2</button>
+            </div>
+
+            <div style="
+                display: flex; 
+                align-items: center;
+                justify-content: center;
+                width: 33.33%;
+                border-left: 6px black solid ;">
+                <h1 style="font-size: 16px;">Attack Type</h1>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"
+        integrity="sha512-bD2JVWcpIS1kkd7gbzcVKfGbwLTRKL+2RT55rGbhSp/nqCz8vanLuZ8O5K1FLtyPoS2RvLD9sThVgHdgrHFBPw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="data/battleZones.js"></script>
+    <script src="data/collisions.js"></script>
+    <script src="data/classes.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
